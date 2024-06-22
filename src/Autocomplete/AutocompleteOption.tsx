@@ -34,10 +34,10 @@ export const AutocompleteOption = ({
       )}
       id={htmlId}
       role="option"
+      data-autocomplete-option=""
       //This needs to be a mouse down event to allow the click event in the AutocompleteOption to fire
       //before the onBlur event in the Autocomplete component
       onClick={onClick}
-      onMouseDown={onClick}
     >
       {children || value?.toString()}
     </li>

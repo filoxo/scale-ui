@@ -5,7 +5,6 @@ import React, {
   forwardRef,
   useCallback,
 } from "react";
-import classNames from "classnames";
 import { ActiveDescendantContext } from "./ActiveDescendantContext";
 import { useTrackActiveDescendant } from "./useTrackActiveDescendant";
 import { KeyCode } from "../constants";
@@ -16,8 +15,9 @@ export interface AutocompleteProps
   children: React.ReactNode;
   autoExpand?: boolean;
   listboxPosition?: "top" | "bottom";
-  value?: string;
-  onOptionSelect?: (value: unknown) => void;
+  value: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onOptionSelect: (value: unknown) => boolean;
   onKeyDown?: React.KeyboardEventHandler<HTMLInputElement>;
 }
 
@@ -26,10 +26,9 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
     {
       id,
       children,
-      autoExpand = false,
+      autoExpand: initialExpanded = true,
       listboxPosition = "bottom",
       value,
-      onBlur,
       onFocus,
       onKeyDown,
       onOptionSelect,
@@ -41,7 +40,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
     const comboboxId = id || autoId;
     const listboxId = `${comboboxId}-listbox`;
 
-    const [expanded, setExpanded] = useState(true);
+    const [expanded, setExpanded] = useState(initialExpanded);
     // @todo: can/should ref handler be moved into hook?
     const [domNode, setDomNode] = useState<HTMLUListElement>();
     const listboxRefCb = useCallback((domNode: HTMLUListElement | null) => {
@@ -54,7 +53,8 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
         checkIfActive: activeDescendant.check,
         onOptionSelect: (id: string | undefined, newValue: unknown) => {
           activeDescendant.update(id);
-          onOptionSelect?.(newValue);
+          const result = onOptionSelect?.(newValue);
+          setExpanded(result);
         },
       };
       // 'activeDescendant' is a custom hook that does not need to be included as a dependency here since it handles its own internal dependencies.
@@ -85,7 +85,10 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
     };
 
     return (
-      <div data-autocomplete-root="">
+      <div
+        data-autocomplete-root=""
+        data-autocomplete-listbox-position={listboxPosition}
+      >
         <input
           {...remainingProps}
           aria-activedescendant={activeDescendant.current ?? undefined}
@@ -98,12 +101,11 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           ref={comboboxRef}
           role="combobox"
           value={value}
-          onBlur={(e) => {
-            setExpanded(false);
-            onBlur?.(e);
+          onDoubleClick={() => {
+            setExpanded(!expanded);
           }}
           onFocus={(e) => {
-            setExpanded(autoExpand);
+            setExpanded(true);
             onFocus?.(e);
           }}
           onKeyDown={(e) => {
@@ -113,25 +115,17 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
         />
         <div data-autocomplete-listbox-anchor="">
           <ActiveDescendantContext.Provider value={activeDescendantState}>
-            {expanded && (
-              <ul
-                aria-labelledby={comboboxId}
-                className={classNames(
-                  "b-grey-300 b-solid b-1 rd-3 z-1 absolute left-0 right-0 m-0 list-none overflow-hidden bg-white px-0 py-4 empty:hidden",
-                  {
-                    "bottom-14": listboxPosition === "top",
-                    "top-2": listboxPosition === "bottom",
-                  }
-                )}
-                data-autocomplete-listbox=""
-                data-autocomplete-listbox-position={listboxPosition}
-                id={listboxId}
-                ref={listboxRefCb}
-                role="listbox"
-              >
-                {children}
-              </ul>
-            )}
+            <ul
+              aria-labelledby={comboboxId}
+              data-autocomplete-listbox=""
+              data-autocomplete-listbox-position={listboxPosition}
+              id={listboxId}
+              ref={listboxRefCb}
+              role="listbox"
+              data-expanded={expanded}
+            >
+              {children}
+            </ul>
           </ActiveDescendantContext.Provider>
         </div>
       </div>

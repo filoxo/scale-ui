@@ -1,0 +1,26 @@
+[data-autocomplete-listbox-anchor] {
+  position: relative;
+}
+[data-autocomplete-input] {
+  display: block;
+}
+[data-autocomplete-listbox] {
+  position: absolute;
+  border: 1 solid gainsboro;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0.5rem;
+  overflow-y: hidden;
+  list-style-type: none;
+  z-index: 1;
+}
+[data-autocomplete-listbox]:empty {
+  display: none;
+}
+[data-autocomplete-listbox-position="top"] {
+  top: 0.5rem;
+}
+[data-autocomplete-listbox-position="bottom"] {
+  bottom: 3.5rem;
+}

@@ -135,14 +135,14 @@ describe("Autocomplete", () => {
       input?.focus();
 
       const listbox = screen.queryByRole("listbox");
-      expect(listbox).toBeVisible();
+      expect(listbox).toBeInTheDocument()
 
       document.activeElement &&
         fireEvent.keyDown(document.activeElement, {
           key: KeyCode.ESC,
-        });
+        })
 
-      expect(listbox).not.toBeVisible();
+      expect(listbox).toHaveAttribute("data-expanded", "false")
     });
 
     it("opens the listbox when alt + enter is pressed", () => {

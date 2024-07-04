@@ -110,11 +110,9 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           role="combobox"
           value={value}
           onMouseDown={() => {
-            console.log("onMouseDown")
             setExpanded(!expanded)
           }}
           onBlur={() => {
-            console.log("onBlur")
             setExpanded(false)
           }}
           onFocus={(e) => {

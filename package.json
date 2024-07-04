@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "pnpm ladle serve",
-    "build": "tsc -b && vite build",
+    "start": "npx ladle serve",
+    "build:lib": "tsc -b && vite build",
+    "build:docs": "npx ladle build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "test": "vitest"

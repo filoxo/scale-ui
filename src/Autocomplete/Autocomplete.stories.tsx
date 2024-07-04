@@ -7,38 +7,35 @@ import { useState } from "react";
 export default {
   args: {
     autoExpand: true,
-    onOptionSelect: (value) => console.log({ value }),
   },
 } satisfies StoryDefault<AutocompleteProps>;
 
 export const Default: Story<AutocompleteProps> = () => {
-  const [option, setOption] = useState("");
+  const [displayValue, setDisplayValue] = useState("");
   return (
     <div className="min-h-250px">
       <label htmlFor="demo">Select an option</label>
       <Autocomplete
         id="demo"
-        value={option?.toString()}
-        onChange={(e) => setOption(e.target.value)}
+        value={displayValue}
+        onChange={(e) => {
+          setDisplayValue(e.target.value);
+        }}
+        onOptionSelect={(option: unknown) => {
+          const value =
+            typeof option === "string" ? option : JSON.stringify(option);
+          setDisplayValue(value);
+          return false; // this controls whether the autocomplete stays open or not after clicking on an option
+        }}
       >
+        <AutocompleteOption value="A" />
+        <AutocompleteOption value="B" />
+        <AutocompleteOption value="C" />
         <AutocompleteOption
-          className="hover:bg-warm-grey px-4 py-2"
-          value="A"
-        />
-        <AutocompleteOption
-          className="hover:bg-warm-grey px-4 py-2"
-          value="B"
-        />
-        <AutocompleteOption
-          className="hover:bg-warm-grey px-4 py-2"
-          value="C"
-        />
-        <AutocompleteOption
-          className="hover:bg-warm-grey px-4 py-2"
           value={{
             details:
-              "you can even pass in an object or other primitive! (as long as its stringify-able)",
-            simple: false,
+              "you can even pass in an object or other primitive! (as long as it can be turned into a string)",
+            advanced: true,
             value: +9000,
           }}
         >

@@ -21,9 +21,16 @@ export const AutocompleteOption = ({
   const { checkIfActive, onOptionSelect } = useActiveDescendantContext();
   const selected = checkIfActive(htmlId);
 
-  const onClick = () => {
-    onOptionSelect(htmlId, value);
-  };
+  const handleSelection = (e: React.MouseEvent<HTMLElement>) => {
+    // prevent blur from triggering when clicking on menu item
+    // https://stackoverflow.com/a/67979700/2554793
+    //
+    // what should have been a simple "just use native browser events"
+    // turned into this esoteric mess of an implementation detail
+    e?.preventDefault()
+
+    onOptionSelect(htmlId, value)
+  }
 
   return (
     <li
@@ -35,11 +42,12 @@ export const AutocompleteOption = ({
       id={htmlId}
       role="option"
       data-autocomplete-option=""
-      //This needs to be a mouse down event to allow the click event in the AutocompleteOption to fire
-      //before the onBlur event in the Autocomplete component
-      onClick={onClick}
+      // prevent mouse event sending focus to menu items, stealing focus from Input
+      onMouseDown={handleSelection}
+      // for keyboard event to trigger activeDescendant.click()
+      onClick={handleSelection}
     >
       {children || value?.toString()}
     </li>
-  );
+  )
 };

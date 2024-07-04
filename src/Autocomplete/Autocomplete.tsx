@@ -26,7 +26,7 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
     {
       id,
       children,
-      autoExpand: initialExpanded = true,
+      autoExpand = true,
       listboxPosition = "bottom",
       value,
       onFocus,
@@ -36,53 +36,61 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
     },
     comboboxRef
   ) {
-    const autoId = useId();
-    const comboboxId = id || autoId;
-    const listboxId = `${comboboxId}-listbox`;
+    const autoId = useId()
+    const comboboxId = id || autoId
+    const listboxId = `${comboboxId}-listbox`
 
-    const [expanded, setExpanded] = useState(initialExpanded);
+    const [expanded, setExpanded] = useState(false)
     // @todo: can/should ref handler be moved into hook?
-    const [domNode, setDomNode] = useState<HTMLUListElement>();
+    // @todo: why do i feel like useImperativeHandle should be used here somehow?
+    const [domNode, setDomNode] = useState<HTMLUListElement>()
     const listboxRefCb = useCallback((domNode: HTMLUListElement | null) => {
-      setDomNode(domNode || undefined);
-    }, []);
-    const activeDescendant = useTrackActiveDescendant({ element: domNode });
+      setDomNode(domNode || undefined)
+    }, [])
+    const activeDescendant = useTrackActiveDescendant({ element: domNode })
 
     const activeDescendantState = useMemo(() => {
       return {
         checkIfActive: activeDescendant.check,
         onOptionSelect: (id: string | undefined, newValue: unknown) => {
-          activeDescendant.update(id);
-          const result = onOptionSelect?.(newValue);
-          setExpanded(result);
+          activeDescendant.update(id)
+          const result = onOptionSelect?.(newValue)
+          setExpanded(result)
         },
-      };
+      }
       // 'activeDescendant' is a custom hook that does not need to be included as a dependency here since it handles its own internal dependencies.
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [domNode, activeDescendant.check, onOptionSelect]);
+    }, [domNode, activeDescendant.check, onOptionSelect])
 
     const trackActiveDescendant = (
       e: React.KeyboardEvent<HTMLInputElement>
     ) => {
       if (expanded) {
         if (e.key === KeyCode.DOWN) {
-          e.preventDefault();
-          activeDescendant.next();
+          e.preventDefault()
+          activeDescendant.next()
         } else if (e.key === KeyCode.UP) {
-          e.preventDefault();
-          activeDescendant.prev();
+          e.preventDefault()
+          activeDescendant.prev()
         } else if (e.key === KeyCode.ESC) {
-          setExpanded(false);
-          activeDescendant.clear();
+          setExpanded(false)
+          activeDescendant.clear()
         } else if (e.key === KeyCode.ENTER) {
-          activeDescendant.click();
+          activeDescendant.click()
         }
       } else {
-        if (e.key === KeyCode.ENTER && e.altKey) {
-          setExpanded(true);
+        if (
+          // e.key === KeyCode.ENTER ||
+          // e.key === KeyCode.SPACE ||
+          e.key === KeyCode.DOWN
+        ) {
+          setExpanded(true)
         }
       }
-    };
+      if (e.key === KeyCode.ENTER || e.key === KeyCode.SPACE) {
+        setExpanded(!expanded)
+      }
+    }
 
     return (
       <div
@@ -101,16 +109,22 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           ref={comboboxRef}
           role="combobox"
           value={value}
-          onDoubleClick={() => {
-            setExpanded(!expanded);
+          onMouseDown={() => {
+            console.log("onMouseDown")
+            setExpanded(!expanded)
+          }}
+          onBlur={() => {
+            console.log("onBlur")
+            setExpanded(false)
           }}
           onFocus={(e) => {
-            setExpanded(true);
-            onFocus?.(e);
+            setExpanded(autoExpand)
+            onFocus?.(e)
           }}
           onKeyDown={(e) => {
-            trackActiveDescendant(e);
-            onKeyDown?.(e);
+            console.log("onKeyDown")
+            trackActiveDescendant(e)
+            onKeyDown?.(e)
           }}
         />
         <div data-autocomplete-listbox-anchor="">
@@ -129,8 +143,8 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
           </ActiveDescendantContext.Provider>
         </div>
       </div>
-    );
+    )
   }
-);
+)
 
 Autocomplete.displayName = "Autocomplete";

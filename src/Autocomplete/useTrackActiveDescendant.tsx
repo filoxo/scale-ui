@@ -69,7 +69,7 @@ export const useTrackActiveDescendant = <T extends HTMLElement>({
     activeElem?.click()
   }
 
-  const check = id => id === activeId
+  const check = (id: string) => id === activeId
 
   /**
    * @deftype {Object} TrackActiveDescendant

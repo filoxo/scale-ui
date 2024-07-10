@@ -120,7 +120,6 @@ export const Autocomplete = forwardRef<HTMLInputElement, AutocompleteProps>(
             onFocus?.(e)
           }}
           onKeyDown={(e) => {
-            console.log("onKeyDown")
             trackActiveDescendant(e)
             onKeyDown?.(e)
           }}

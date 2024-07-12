@@ -8,6 +8,8 @@ my personally curated design gallery of components with an emphasis on
   - accessibility baked in
 - sensible defaults, with easy escape-hatches
 
+Documentation and interactive playground at https://scale-ui.pages.dev/
+
 # Inspiration & resources
 
 - https://github.com/scottaohara/accessible_components

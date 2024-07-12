@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://scale-ui.pages.dev/",
   "scripts": {
     "start": "npx ladle serve",
     "build:lib": "tsc -b && vite build",

@@ -1,0 +1,22 @@
+[data-dialog] {
+  background-color: white;
+  border: none;
+  border-radius: .25rem;
+  display: grid;
+  justify-items: center;
+  max-width: 440px;
+  position: fixed;
+  overflow-y: auto;
+  padding: 1rem;
+  width: 100%;
+}
+
+[data-dialog]::backdrop {
+  background: #0005;
+}
+
+[data-dialog-close] {
+  order: -1;
+  display: flex;
+  flex-direction: row-reverse;
+}

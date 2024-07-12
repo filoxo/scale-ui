@@ -11,5 +11,5 @@
     "types": ["vitest/globals"],
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*.test.tsx", "*.config.ts", "*.setup.ts"]
+  "include": ["src/**/*.tsx", "*.config.ts", "*.setup.ts"]
 }

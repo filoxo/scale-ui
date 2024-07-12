@@ -67,7 +67,6 @@ export const Dialog = ({
    * - a `<dialog open></dialog>` cannot have a styled backdrop, ie. `dialog[open]::backdrop` doesn't exist or work. it must be opened with js api for that.
    */
   const handleDialogRef = (node: HTMLDialogElement | null) => {
-    console.log(node)
     if (node) {
       modalRef.current = node
       modalRef.current?.showModal()

@@ -1,0 +1,25 @@
+@keyframes accordion-panel-slide-up {
+  0% {
+    max-height: 0;
+    opacity: 0;
+  }
+  100% {
+    max-height: 1000px;
+    opacity: 1;
+  }
+}
+
+[data-accordion-panel] {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+[data-accordion-panel][data-expanded="true"] {
+  animation-name: accordion-panel-slide-up;
+  max-height: 1000px;
+  visibility: visible;
+  opacity: 1;
+}

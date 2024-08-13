@@ -15,20 +15,30 @@ export default {
 
 export const Default: Story<AccordionProps> = () => {
   return (
-    <Accordion>
-      <AccordionItemGroup>
-        <AccordionButton>Section 1</AccordionButton>
-        <AccordionPanel>Lorem ipsum 1</AccordionPanel>
-      </AccordionItemGroup>
-      <AccordionItemGroup>
-        <AccordionButton>Section 2</AccordionButton>
-        <AccordionPanel>Lorem ipsum 2</AccordionPanel>
-      </AccordionItemGroup>
-      <AccordionItemGroup>
-        <AccordionButton>Section 3</AccordionButton>
-        <AccordionPanel>Lorem ipsum 3</AccordionPanel>
-      </AccordionItemGroup>
-    </Accordion>
+    <>
+      <p>
+        An accordion is a JavaScript implementation of the{" "}
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details">
+          HTML Details element
+        </a>
+        . Some UI requirements, like that in the <em>custom trigger</em> story,
+        make a custom implementation necessary.
+      </p>
+      <Accordion>
+        <AccordionItemGroup>
+          <AccordionButton>Section 1</AccordionButton>
+          <AccordionPanel>Lorem ipsum 1</AccordionPanel>
+        </AccordionItemGroup>
+        <AccordionItemGroup>
+          <AccordionButton>Section 2</AccordionButton>
+          <AccordionPanel>Lorem ipsum 2</AccordionPanel>
+        </AccordionItemGroup>
+        <AccordionItemGroup>
+          <AccordionButton>Section 3</AccordionButton>
+          <AccordionPanel>Lorem ipsum 3</AccordionPanel>
+        </AccordionItemGroup>
+      </Accordion>
+    </>
   )
 }
 

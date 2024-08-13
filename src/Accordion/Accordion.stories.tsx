@@ -22,7 +22,23 @@ export const Default: Story<AccordionProps> = () => {
           HTML Details element
         </a>
         . Some UI requirements, like that in the <em>custom trigger</em> story,
-        make a custom implementation necessary.
+        make a custom implementation necessary. Even a requirement as simple as
+        "animate in/out" might require this.
+      </p>
+      <p>
+        See also:
+        <ul>
+          <li>
+            <a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">
+              WAI-ARIA Accordion Pattern
+            </a>
+          </li>
+          <li>
+            <a href="https://www.w3.org/TR/wai-aria-practices-1.2/#disclosure">
+              WAI-ARIA Disclosure Pattern
+            </a>
+          </li>
+        </ul>
       </p>
       <Accordion>
         <AccordionItemGroup>

@@ -1,7 +1,6 @@
-
 # scale-ui
 
-my personally curated design gallery of components with an emphasis on
+My personal UI library playground, with an emphasis on
 
 - web standards first
   - html/css as much as possible, js as necessary

@@ -38,27 +38,23 @@ export const Default: Story<DialogProps> = () => {
 export const WithActions: Story<DialogProps> = () => {
   const [isOpen, setIsOpen] = useState(true)
 
+  const toggleOpen = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <>
-      <button
-        onClick={() => {
-          setIsOpen(true)
-        }}
-      >
-        Open modal
-      </button>
+      <button onClick={toggleOpen}>Open modal with actions</button>
       {isOpen && (
         <Dialog
           id="scale-modal-demo"
-          onClose={() => {
-            setIsOpen(false)
-          }}
+          onClose={toggleOpen}
           actions={
             <>
-              <button type="button" id="action-ok">
+              <button type="button" id="action-ok" onClick={toggleOpen}>
                 OK
               </button>
-              <button type="button" id="action-cancel">
+              <button type="button" id="action-cancel" onClick={toggleOpen}>
                 Cancel
               </button>
             </>

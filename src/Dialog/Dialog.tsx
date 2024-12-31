@@ -9,8 +9,6 @@ export interface DialogProps
   disableBodyScroll?: boolean
   className?: string
   root?: Element | DocumentFragment
-  scroll?: boolean
-  title?: string
   contentRef?: React.RefObject<HTMLDivElement>
   onClose?: () => void
 }
@@ -27,21 +25,6 @@ const useDisableBodyScroll = (disableBodyScroll: boolean) => {
   }, [])
 }
 
-/**
- * @example
- * <Modal
- *   actions={
- *     <>
- *       <Button>Action</Button>
- *       <Button variant='outlined'>Cancel</Button>
- *     </>
- *   }
- *   title="Example Modal"
- *   onClose={handleModalClose}
- * >
- *   <div>This is example modal content.</div>
- * </Modal>
- */
 export const Dialog = ({
   actions,
   children,

@@ -81,25 +81,15 @@ export const Dialog = ({
       data-dialog=""
       ref={handleDialogRef}
       {...props}
-      className={`modal-backdrop fixed bottom-0 left-0 right-0 top-0 z-10 flex h-full w-full flex-col justify-end border-none bg-black/60 p-0 md:justify-center ${
-        props?.className || ""
-      }`}
+      className={`modal-backdrop ${props?.className || ""}`}
     >
-      <div data-modal-content="" ref={contentRef}>
+      <div data-dialog-content="" ref={contentRef}>
         {children}
       </div>
-      {actions && (
-        <div className="border-t-1 border-t-solid border-t-grey-300 order-1 flex flex-row-reverse justify-center gap-2 pt-4 md:justify-start">
-          {actions}
-        </div>
-      )}
+      {actions && <div data-dialog-actions="">{actions}</div>}
       {/* always last element, but visually first */}
       <div data-dialog-close="">
-        <button
-          aria-label="Close modal"
-          className="hover:bg-grey-200 outline-valley border-rd flex-inline flex-items-center flex-justify-center text-forest cursor-pointer border-0 bg-white p-1"
-          onClick={onClose}
-        >
+        <button aria-label="Close modal" onClick={onClose}>
           &times;
         </button>
       </div>

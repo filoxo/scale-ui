@@ -1,11 +1,26 @@
-.carousel-item{
-    padding: 4rem 1rem;
-    width: 40%;
+.carousel-item {
+  padding: 4rem 1rem;
+  width: 40%;
 }
 
 .carousel-item:nth-child(even) {
-    background-color: gainsboro;
+  background-color: gainsboro;
 }
+
 .carousel-item:nth-child(odd) {
-    background-color:  whitesmoke;
+  background-color: whitesmoke;
+}
+
+.carousel-stories-controls {
+  margin-block-end: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+
+  button {
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+    border: none;
+    background-color: gainsboro;
+  }
 }

@@ -11,33 +11,18 @@ export default {
   args: {},
 } satisfies StoryDefault<CarouselProps>
 
-const Button = (props: any) => (
-  <button
-    {...props}
-    style={{
-      padding: ".5rem 1.5rem",
-      borderRadius: "1rem",
-      border: "none",
-      backgroundColor: "gainsboro",
-    }}
-  />
-)
-
 export const Default: Story<CarouselProps> = () => {
   const { setContainerRef, onPrevClick, onNextClick } = useCarouselControls()
 
   return (
     <div>
-      <div
-        style={{
-          marginBlockEnd: "1rem",
-          display: "flex",
-          gap: "1rem",
-          justifyContent: "space-between",
-        }}
-      >
-        <Button onClick={onPrevClick}>Prev</Button>
-        <Button onClick={onNextClick}>Next</Button>
+      <div className="carousel-stories-controls">
+        <button type="button" onClick={onPrevClick}>
+          Prev
+        </button>
+        <button type="button" onClick={onNextClick}>
+          Next
+        </button>
       </div>
       <Carousel id="scale-modal-demo" ref={setContainerRef}>
         <CarouselItem>Item 1</CarouselItem>

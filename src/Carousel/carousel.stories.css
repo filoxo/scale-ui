@@ -1,0 +1,11 @@
+.carousel-item{
+    padding: 4rem 1rem;
+    width: 40%;
+}
+
+.carousel-item:nth-child(even) {
+    background-color: gainsboro;
+}
+.carousel-item:nth-child(odd) {
+    background-color:  whitesmoke;
+}

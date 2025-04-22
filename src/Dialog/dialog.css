@@ -30,4 +30,5 @@
   order: -1;
   display: inline-flex;
   flex-direction: row-reverse;
+  width: 100%;
 }

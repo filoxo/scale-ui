@@ -13,3 +13,14 @@ Documentation and interactive playground at https://scale-ui.pages.dev/
 
 - https://github.com/scottaohara/accessible_components
 - [daisyui](https://daisyui.com/)
+
+# Development
+
+```
+npm install
+npm run dev
+```
+
+## Guidelines
+
+- use html named colors

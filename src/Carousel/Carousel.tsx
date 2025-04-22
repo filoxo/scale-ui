@@ -20,6 +20,14 @@ export const useCarouselControls = () => {
     containerRef?.querySelectorAll(".carousel-item") || []
   )
 
+  const setContainerRefSafe = (node: Element | null) => {
+    if (node && !node?.classList.contains("carousel"))
+      throw new Error(
+        "ref must be a <Carousel /> component! Make sure it is attaches correctly to a Carousel, which might happen if there are intermediate components."
+      )
+    setContainerRef(node)
+  }
+
   function isInView(container: Element, slide: Element) {
     const containerRect = container?.getBoundingClientRect()
     const slideRect = slide?.getBoundingClientRect()
@@ -47,7 +55,7 @@ export const useCarouselControls = () => {
   }
 
   return {
-    setContainerRef,
+    setContainerRef: setContainerRefSafe,
     onPrevClick,
     onNextClick,
   }

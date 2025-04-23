@@ -18,7 +18,7 @@ Documentation and interactive playground at https://scale-ui.pages.dev/
 
 ```
 npm install
-npm run dev
+npm start
 ```
 
 ## Guidelines

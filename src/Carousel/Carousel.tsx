@@ -46,6 +46,7 @@ export const useCarouselControls = () => {
     prevSlide?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
+      inline: "start",
     })
   }
 
@@ -57,6 +58,7 @@ export const useCarouselControls = () => {
     nextSlide?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
+      inline: "end",
     })
   }
 

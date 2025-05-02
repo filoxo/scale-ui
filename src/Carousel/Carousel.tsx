@@ -32,8 +32,8 @@ export const useCarouselControls = () => {
     const containerRect = container?.getBoundingClientRect()
     const slideRect = slide?.getBoundingClientRect()
     return (
-      slideRect.right > containerRect.left &&
-      slideRect.left < containerRect.right
+      slideRect.right >= containerRect.left &&
+      slideRect.left <= containerRect.right
     )
   }
 

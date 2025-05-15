@@ -2,6 +2,7 @@
   background-color: white;
   border: none;
   border-radius: .75rem;
+  box-shadow: 0 6px 10px #0003;
   display: flex;
   flex-direction: column;
   justify-items: center;

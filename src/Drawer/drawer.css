@@ -7,19 +7,19 @@
 }
 
 .drawer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100vw;
-  max-width: 320px;
-  height: auto;
-  max-height: 90dvh;
-  background: var(--background_pop, #fff);
-  box-shadow: 0 -2px 16px rgba(0,0,0,0.12);
-  z-index: 100;
+  background: white;
+  border: none;
+  border-radius: .75rem .75rem 0 0;
+  box-shadow: 0 6px 10px #0003;
   display: flex;
   flex-direction: column;
+  height: auto;
+  margin-block-end: 0;
+  max-height: min(30vh, 500px);
+  max-width: 320px;
   outline: none;
+  padding: 1.5rem;
+  width: 100%;
   /* Animation */
   transition-property: transform, opacity, display;
   transition-behavior: allow-discrete;
@@ -42,15 +42,5 @@
 }
 
 .drawer::backdrop {
-  background: rgba(0,0,0,0.18);
-  backdrop-filter: blur(2px);
-  transition: background var(--duration) linear;
-}
-
-/* Optional: Responsive for mobile */
-@media (max-width: 480px) {
-  .drawer {
-    width: 100vw;
-    max-width: 100vw;
-  }
+  background: #0005;
 }

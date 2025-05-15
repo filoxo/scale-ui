@@ -66,8 +66,8 @@ export const Drawer = forwardRef<DrawerHandle, DrawerProps>(
     useEffect(() => {
       const node = drawerRef.current
       if (!node || !onClose) return
-      function handleClose(e: Event) {
-        if (onClose) onClose()
+      function handleClose() {
+        onClose?.()
       }
       node.addEventListener("close", handleClose)
       return () => {

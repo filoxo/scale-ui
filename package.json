@@ -5,14 +5,12 @@
   "type": "module",
   "homepage": "https://scale-ui.pages.dev/",
   "scripts": {
-    "start": "npx ladle serve",
+    "start": "storybook dev -p 6006",
     "build:lib": "tsc -b && vite build",
-    "build:docs": "npx ladle build",
+    "build:docs": "storybook build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "test": "vitest"
   },
   "dependencies": {
     "react": "^19.1.0",

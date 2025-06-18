@@ -1,4 +1,4 @@
-import type { StoryDefault, Story } from "@ladle/react"
+import type { Meta, StoryObj } from "@storybook/react"
 import {
   Accordion,
   AccordionPanel,
@@ -9,12 +9,17 @@ import { useAccordionTrigger } from "./hooks"
 
 type AccordionProps = React.ComponentPropsWithoutRef<typeof Accordion>
 
-export default {
-  args: {},
-} satisfies StoryDefault<AccordionProps>
+const meta = {
+  component: Accordion,
+} satisfies Meta<AccordionProps>
 
-export const Default: Story<AccordionProps> = () => {
-  return (
+export default meta
+
+type Story = StoryObj<AccordionProps>
+
+export const Default: Story = {
+  args: {},
+  render: (args) => (
     <>
       <p>
         An accordion is a JavaScript implementation of the{" "}
@@ -40,7 +45,7 @@ export const Default: Story<AccordionProps> = () => {
           </li>
         </ul>
       </p>
-      <Accordion>
+      <Accordion {...args}>
         <AccordionItemGroup>
           <AccordionButton>Section 1</AccordionButton>
           <AccordionPanel>Lorem ipsum 1</AccordionPanel>
@@ -55,7 +60,7 @@ export const Default: Story<AccordionProps> = () => {
         </AccordionItemGroup>
       </Accordion>
     </>
-  )
+  ),
 }
 
 const CustomTrigger = ({
@@ -91,9 +96,10 @@ const CustomTrigger = ({
   )
 }
 
-export const WithCustomTrigger: Story<AccordionProps> = () => {
-  return (
-    <Accordion>
+export const WithCustomTrigger: Story = {
+  args: {},
+  render: (args) => (
+    <Accordion {...args}>
       <AccordionItemGroup>
         <CustomTrigger title="Jan schedule" available={true} />
         <AccordionPanel>
@@ -152,5 +158,5 @@ export const WithCustomTrigger: Story<AccordionProps> = () => {
         </AccordionPanel>
       </AccordionItemGroup>
     </Accordion>
-  )
+  ),
 }

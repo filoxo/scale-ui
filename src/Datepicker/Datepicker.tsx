@@ -12,7 +12,6 @@ export type DatepickerProps = {
 export function Datepicker({ id, date, onChange }: DatepickerProps) {
   const today = new Date()
   const firstDate = Array.isArray(date) ? date[0] : date
-  const firstDay = firstDate.getDay()
 
   const [currentMonth, setCurrentMonth] = useState(firstDate.getMonth())
   const [currentYear, setCurrentYear] = useState(firstDate.getFullYear())
@@ -27,6 +26,7 @@ export function Datepicker({ id, date, onChange }: DatepickerProps) {
     currentMonth,
     1
   ).toLocaleString("en-US", { month: "long" })
+  const firstDay = days[0].getDay()
 
   return (
     <>
@@ -45,6 +45,7 @@ export function Datepicker({ id, date, onChange }: DatepickerProps) {
           &rarr;
         </button>
       </div>
+
       <div id={id} className="datepicker-grid">
         {firstDay ? (
           <span style={{ gridColumn: `span ${firstDay}` }}></span>

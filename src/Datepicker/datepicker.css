@@ -1,0 +1,39 @@
+.datepicker-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.datepicker-day {
+  border: none;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  &[data-is-today="true"] {
+    background-color: #555;
+  }
+}
+
+.datepicker-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+
+  h3 {
+    margin: 0;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}

@@ -14,6 +14,24 @@ export function Datepicker({ id, date, onChange }: DatepickerProps) {
   const [currentMonth, setCurrentMonth] = useState(firstDate.getMonth())
   const [currentYear, setCurrentYear] = useState(firstDate.getFullYear())
 
+  function handlePreviousMonth() {
+    if (currentMonth === 0) {
+      setCurrentMonth(11)
+      setCurrentYear((prev: number) => prev - 1)
+    } else {
+      setCurrentMonth((prev: number) => prev - 1)
+    }
+  }
+
+  function handleNextMonth() {
+    if (currentMonth === 11) {
+      setCurrentMonth(0)
+      setCurrentYear((prev: number) => prev + 1)
+    } else {
+      setCurrentMonth((prev: number) => prev + 1)
+    }
+  }
+
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate()
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1).map(
     (day) => new Date(currentYear, currentMonth, day)
@@ -31,14 +49,16 @@ export function Datepicker({ id, date, onChange }: DatepickerProps) {
       <div className="datepicker-header">
         <button
           type="button"
-          onClick={() => setCurrentMonth((prev: number) => prev - 1)}
+          onClick={handlePreviousMonth}
+          aria-label="Previous month"
         >
           &larr;
         </button>
-        <h3>{currentMonthName}</h3>
+        <h3>{currentMonthName} {currentYear}</h3>
         <button
           type="button"
-          onClick={() => setCurrentMonth((prev: number) => prev + 1)}
+          onClick={handleNextMonth}
+          aria-label="Next month"
         >
           &rarr;
         </button>
@@ -96,11 +116,28 @@ export function DateRangepicker({ id, date, onChange }: DateRangepickerProps) {
 
   const [currentMonth, setCurrentMonth] = useState(firstDate.getMonth())
   const [currentYear, setCurrentYear] = useState(firstDate.getFullYear())
-
   const [selectedDates, setSelectedDates] = useState<[Date, Date | null]>([
     firstDate,
     secondDate,
   ])
+
+  function handlePreviousMonth() {
+    if (currentMonth === 0) {
+      setCurrentMonth(11)
+      setCurrentYear((prev: number) => prev - 1)
+    } else {
+      setCurrentMonth((prev: number) => prev - 1)
+    }
+  }
+
+  function handleNextMonth() {
+    if (currentMonth === 11) {
+      setCurrentMonth(0)
+      setCurrentYear((prev: number) => prev + 1)
+    } else {
+      setCurrentMonth((prev: number) => prev + 1)
+    }
+  }
 
   const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate()
   const days = Array.from({ length: daysInMonth }, (_, i) => i + 1).map(
@@ -119,9 +156,8 @@ export function DateRangepicker({ id, date, onChange }: DateRangepickerProps) {
       <div className="datepicker-header">
         <button
           type="button"
-          onClick={() => {
-            setCurrentMonth((prev: number) => prev - 1)
-          }}
+          onClick={handlePreviousMonth}
+          aria-label="Previous month"
         >
           &larr;
         </button>
@@ -130,12 +166,8 @@ export function DateRangepicker({ id, date, onChange }: DateRangepickerProps) {
         </h3>
         <button
           type="button"
-          onClick={() => {
-            setCurrentMonth((prev: number) => prev + 1)
-            if (currentMonth === 11) {
-              setCurrentYear((prev: number) => prev + 1)
-            }
-          }}
+          onClick={handleNextMonth}
+          aria-label="Next month"
         >
           &rarr;
         </button>

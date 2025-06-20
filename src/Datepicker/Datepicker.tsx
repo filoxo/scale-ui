@@ -48,20 +48,24 @@ export function Datepicker({ id, date, onChange }: DatepickerProps) {
         {firstDay ? (
           <span style={{ gridColumn: `span ${firstDay}` }}></span>
         ) : null}
-        {days.map((day) => (
-          <button
-            key={day.getDate()}
-            className="datepicker-day"
-            role="option"
-            aria-selected={day.toDateString() === date.toDateString()}
-            data-is-today={
-              day.toDateString() === today.toDateString() ? "true" : null
-            }
-            onClick={() => onChange?.(day)}
-          >
-            {day.getDate()}
-          </button>
-        ))}
+        {days.map((day) => {
+          const isSelected = day.toDateString() === date.toDateString()
+          const isToday = day.toDateString() === today.toDateString()
+          return (
+            <button
+              key={day.getDate()}
+              className="datepicker-day"
+              role="option"
+              aria-selected={isSelected}
+              data-is-start={isSelected ? "true" : null}
+              data-is-end={isSelected ? "true" : null}
+              data-is-today={isToday ? "true" : null}
+              onClick={() => onChange?.(day)}
+            >
+              {day.getDate()}
+            </button>
+          )
+        })}
       </div>
     </>
   )

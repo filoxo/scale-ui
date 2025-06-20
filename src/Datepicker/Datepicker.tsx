@@ -3,7 +3,7 @@ import "./datepicker.css"
 
 export type DatepickerProps = {
   id: string
-  date: Date | [Date, Date]
+  date: Date
   selectRange?: boolean
   onChange?: (date: [Date] | [Date, Date]) => void
   onDayClick?: (day: number) => void
@@ -33,14 +33,14 @@ export function Datepicker({ id, date, onChange }: DatepickerProps) {
       <div className="datepicker-header">
         <button
           type="button"
-          onClick={() => setCurrentMonth((prev) => prev - 1)}
+          onClick={() => setCurrentMonth((prev: number) => prev - 1)}
         >
           &larr;
         </button>
         <h3>{currentMonthName}</h3>
         <button
           type="button"
-          onClick={() => setCurrentMonth((prev) => prev + 1)}
+          onClick={() => setCurrentMonth((prev: number) => prev + 1)}
         >
           &rarr;
         </button>
@@ -55,8 +55,10 @@ export function Datepicker({ id, date, onChange }: DatepickerProps) {
             key={day.getDate()}
             className="datepicker-day"
             role="option"
-            aria-selected={false}
-            data-is-today={day === today ? "true" : null}
+            aria-selected={day.toDateString() === date.toDateString()}
+            data-is-today={
+              day.toDateString() === today.toDateString() ? "true" : null
+            }
             onClick={() => onChange?.([day])}
           >
             {day.getDate()}

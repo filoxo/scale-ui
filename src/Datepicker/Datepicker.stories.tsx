@@ -17,7 +17,11 @@ export const Default: Story = {
     id: "scale-datepicker-demo",
   },
   render: (args) => {
-    return <Datepicker {...args} date={new Date()} />
+    const [date, setDate] = useState(new Date())
+
+    return (
+      <Datepicker {...args} date={date} onChange={([date]) => setDate(date)} />
+    )
   },
 }
 

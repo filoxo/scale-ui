@@ -4,19 +4,29 @@
 }
 
 .datepicker-day {
-  border: none;
+  border: 1px solid transparent;
+  border-radius: .25rem;
   background: transparent;
   text-align: center;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color, color 0.2s ease;
+  padding: .5rem;
+
+  &[data-is-today="true"] {
+    background-color: #e0e0e0;
+  }
+
   &:hover {
     background-color: #f0f0f0;
   }
-
-  &[data-is-today="true"] {
-    background-color: #555;
-  }
 }
+
+.datepicker-day[aria-selected="true"] {
+  border-color: #555;
+  background-color: #555;
+  color: white;
+}
+
 
 .datepicker-header {
   display: flex;

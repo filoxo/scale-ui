@@ -4,9 +4,7 @@ import "./datepicker.css"
 export type DatepickerProps = {
   id: string
   date: Date
-  selectRange?: boolean
-  onChange?: (date: [Date] | [Date, Date]) => void
-  onDayClick?: (day: number) => void
+  onChange?: (date: Date) => void
 }
 
 export function Datepicker({ id, date, onChange }: DatepickerProps) {
@@ -59,7 +57,7 @@ export function Datepicker({ id, date, onChange }: DatepickerProps) {
             data-is-today={
               day.toDateString() === today.toDateString() ? "true" : null
             }
-            onClick={() => onChange?.([day])}
+            onClick={() => onChange?.(day)}
           >
             {day.getDate()}
           </button>

@@ -48,7 +48,10 @@ export const WithinDrawer: Story = {
             date={date}
             onChange={(date) => {
               setDate(date)
-              drawerRef.current?.close()
+              setTimeout(() => {
+                // delay close for improved ux
+                drawerRef.current?.close()
+              }, 400)
             }}
           />
         </Drawer>

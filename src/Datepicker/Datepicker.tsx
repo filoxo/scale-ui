@@ -178,6 +178,7 @@ export function DateRangepicker({ id, date, onChange }: DateRangepickerProps) {
           <span style={{ gridColumn: `span ${firstDay}` }}></span>
         ) : null}
         {days.map((day) => {
+          const isToday = day.toDateString() === today.toDateString()
           const isStart = day.toDateString() === selectedDates[0].toDateString()
           const isEnd = day.toDateString() === selectedDates[1]?.toDateString()
           const isInRange = isDateInRange(day, selectedDates)
@@ -187,12 +188,10 @@ export function DateRangepicker({ id, date, onChange }: DateRangepickerProps) {
               key={day.getDate()}
               className="datepicker-day"
               role="option"
-              aria-selected={isStart || isEnd || isInRange}
-              data-is-today={
-                day.toDateString() === today.toDateString() ? "true" : null
-              }
+              data-is-today={isToday ? "true" : null}
               data-is-start={isStart ? "true" : null}
               data-is-end={isEnd ? "true" : null}
+              aria-selected={isStart || isEnd || isInRange}
               onClick={() => {
                 if (selectedDates[1] !== null) {
                   setSelectedDates([day, null])

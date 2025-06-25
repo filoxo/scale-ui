@@ -18,14 +18,6 @@ export const Default: Story = {
     const { setContainerRef, onPrevClick, onNextClick } = useCarouselControls()
     return (
       <div>
-        <div className="carousel-stories-controls">
-          <button type="button" onClick={onPrevClick}>
-            Prev
-          </button>
-          <button type="button" onClick={onNextClick}>
-            Next
-          </button>
-        </div>
         <Carousel {...args} ref={setContainerRef}>
           <CarouselItem>Item 1</CarouselItem>
           <CarouselItem>Item 2</CarouselItem>
@@ -38,6 +30,18 @@ export const Default: Story = {
           <CarouselItem>Item 9</CarouselItem>
           <CarouselItem>Item 10</CarouselItem>
         </Carousel>
+        <div className="carousel-stories-controls">
+          <button
+            type="button"
+            aria-label="Previous slide"
+            onClick={onPrevClick}
+          >
+            &laquo;
+          </button>
+          <button type="button" aria-label="Next slide" onClick={onNextClick}>
+            &raquo;
+          </button>
+        </div>
       </div>
     )
   },

@@ -1,0 +1,62 @@
+body {
+  --theme-color: #333;
+
+  --surface-color: oklch(from var(--theme-color) calc(l * 1.2) c h);
+  --brand-color: oklch(from var(--theme-color) calc(l * 3) calc(c * 5) h);
+
+  --text-color-light: #fff;
+  --text-color-dark: #111;
+
+  --text-color: var(--text-color-light);
+
+  background-color: var(--theme-color);
+  color: var(--text-color);
+  font-family: sans-serif;
+}
+
+/* theme-color input */
+[for="theme-color-input"] {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#theme-color-input {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background: none;
+  border: none;
+}
+/* Components */
+section,
+.surface {
+  background-color: var(--surface-color);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+a {
+  color: var(--text-color);
+}
+/* Utilities */
+.flex {
+  display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.space-y-1 > * + * {
+  margin-top: 0.25rem;
+}
+.space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+.space-y-6 > * + * {
+  margin-top: 1.5rem;
+}
+.space-y-8 > * + * {
+  margin-top: 2rem;
+}

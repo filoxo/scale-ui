@@ -1,5 +1,5 @@
 body {
-  --theme-color: #333;
+  --theme-color: #eee;
 
   --surface-color: oklch(from var(--theme-color) calc(l * 1.2) c h);
   --brand-color: oklch(from var(--theme-color) calc(l * 3) calc(c * 5) h);
@@ -7,7 +7,7 @@ body {
   --text-color-light: #fff;
   --text-color-dark: #111;
 
-  --text-color: var(--text-color-light);
+  --text-color: var(--text-color-dark);
 
   background-color: var(--theme-color);
   color: var(--text-color);

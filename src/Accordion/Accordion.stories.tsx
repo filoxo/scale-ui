@@ -30,8 +30,8 @@ export const Default: Story = {
         make a custom implementation necessary. Even a requirement as simple as
         "animate in/out" might require this.
       </p>
-      <p>
-        See also:
+      <div>
+        <p>See also:</p>
         <ul>
           <li>
             <a href="https://www.w3.org/TR/wai-aria-practices-1.2/#accordion">
@@ -44,7 +44,7 @@ export const Default: Story = {
             </a>
           </li>
         </ul>
-      </p>
+      </div>
       <Accordion {...args}>
         <AccordionItemGroup>
           <AccordionButton>Section 1</AccordionButton>

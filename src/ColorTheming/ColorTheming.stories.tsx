@@ -76,29 +76,31 @@ const ColorTheming = () => {
         </div>
         <section>
           <h2>Section 1</h2>
-          <p>
-            Adapted from{" "}
-            <a
-              href="https://www.youtube.com/watch?v=7YaWnHVl7Hk"
-              target="_blank"
-            >
-              this awesome video from Code2GO
-            </a>{" "}
-            this approach makes use of CSS Custom Properties, and oklch units
-            with{" "}
-            <a
-              href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch#relative_value_syntax"
-              target="_blank"
-            >
-              relative value syntax
-            </a>
-            , which gives you:
+          <div>
+            <p>
+              Adapted from{" "}
+              <a
+                href="https://www.youtube.com/watch?v=7YaWnHVl7Hk"
+                target="_blank"
+              >
+                this awesome video from Code2GO
+              </a>{" "}
+              this approach makes use of CSS Custom Properties, and oklch units
+              with{" "}
+              <a
+                href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch#relative_value_syntax"
+                target="_blank"
+              >
+                relative value syntax
+              </a>
+              , which gives you:
+            </p>
             <ul>
               <li>color selection</li>
               <li>color calculations</li>
               <li>lightness-aware text color</li>
             </ul>
-          </p>
+          </div>
           <p>
             I found this approach to be a very neat and elegant solution to
             establishing a scalable color theming system. There is more to this

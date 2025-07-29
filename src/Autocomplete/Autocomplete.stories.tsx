@@ -36,8 +36,8 @@ export const Default: Story = {
           </a>
           .
         </p>
-        <p>
-          See also:
+        <div>
+          <p>See also:</p>
           <ul>
             <li>
               <a href="https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-autocomplete-list/">
@@ -45,7 +45,7 @@ export const Default: Story = {
               </a>
             </li>
           </ul>
-        </p>
+        </div>
         <label htmlFor="demo">Select an option</label>
         <Autocomplete
           {...args}

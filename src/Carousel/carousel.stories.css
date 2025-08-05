@@ -11,19 +11,23 @@
   background-color: whitesmoke;
 }
 
-.carousel-stories-controls {
-  margin-block-start: -8%;
-  display: flex;
-  padding-inline: .5rem;
-  gap: 1rem;
-  justify-content: space-between;
+.carousel-story-wrapper {
+  position: relative;
 
   button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
     font-size: 1rem;
     padding: 0.5rem 0.75rem;
     border-radius: 1rem;
     border: none;
     color: white;
     background-color: dimgray;
+  }
+
+  button:last-of-type {
+    right: 0;
   }
 }

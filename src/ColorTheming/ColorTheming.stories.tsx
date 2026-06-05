@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import "./color-theming.css"
+// these styles are imported in the storybook preview.tsx so that it applies to all stories
+// import "./color-theming.css"
 
 const ColorTheming = () => {
   const getLightnessFromHex = (value: string) => {
@@ -13,7 +14,7 @@ const ColorTheming = () => {
   }
 
   const handleThemeColorOnInput = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const lightness = getLightnessFromHex(event.target.value)
     document.body.setAttribute(
@@ -23,7 +24,7 @@ const ColorTheming = () => {
       --text-color: ${
         lightness > 60 ? "var(--text-color-dark)" : "var(--text-color-light)"
       };
-      `
+      `,
     )
   }
   return (

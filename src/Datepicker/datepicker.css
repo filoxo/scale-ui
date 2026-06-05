@@ -28,6 +28,11 @@
   &:hover {
     background-color: var(--surface-color);
   }
+
+  &:focus-visible {
+    outline: 2px solid var(--brand-color);
+    outline-offset: -2px;
+  }
 }
 
 .datepicker-day[aria-selected="true"] {

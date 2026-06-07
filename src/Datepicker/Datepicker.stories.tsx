@@ -20,7 +20,16 @@ export const Default: Story = {
   render: (args) => {
     const [date, setDate] = useState(new Date())
 
-    return <Datepicker {...args} date={date} onChange={setDate} />
+    return (
+      <div>
+        <p>
+          This is a most naive implementation of a Datepicker that I set out to
+          create by hand. The missing keyboard/accessibility navigation was
+          added later using AI prompting.
+        </p>
+        <Datepicker {...args} date={date} onChange={setDate} />
+      </div>
+    )
   },
 }
 

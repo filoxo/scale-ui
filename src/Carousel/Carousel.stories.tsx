@@ -22,7 +22,7 @@ export const Default: Story = {
   render: (args) => {
     const { setContainerRef, onPrevClick, onNextClick } = useCarouselControls()
     return (
-      <>
+      <div className="space-y-4">
         <section>
           <p>
             The Carousel was built to balance accessibility, performance, and
@@ -56,7 +56,7 @@ export const Default: Story = {
             <CarouselItem>Item 10</CarouselItem>
           </Carousel>
         </div>
-      </>
+      </div>
     )
   },
 }

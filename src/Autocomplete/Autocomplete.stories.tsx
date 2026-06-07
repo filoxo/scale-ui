@@ -20,7 +20,7 @@ export const Default: Story = {
   render: (args) => {
     const [displayValue, setDisplayValue] = useState("")
     return (
-      <div style={{ minHeight: 250 }}>
+      <section style={{ minHeight: 250 }}>
         <p>
           This Autocomplete was built with the assumption that it might not know
           what its "options" might look like. Specifically, the use case was to
@@ -74,7 +74,7 @@ export const Default: Story = {
             D (advanced option)
           </AutocompleteOption>
         </Autocomplete>
-      </div>
+      </section>
     )
   },
 }

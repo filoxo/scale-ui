@@ -20,7 +20,7 @@ type Story = StoryObj<AccordionProps>
 export const Default: Story = {
   args: {},
   render: (args) => (
-    <>
+    <section>
       <p>
         An accordion is a JavaScript implementation of the{" "}
         <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details">
@@ -59,7 +59,7 @@ export const Default: Story = {
           <AccordionPanel>Lorem ipsum 3</AccordionPanel>
         </AccordionItemGroup>
       </Accordion>
-    </>
+    </section>
   ),
 }
 

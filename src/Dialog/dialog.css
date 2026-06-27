@@ -1,4 +1,6 @@
 [data-dialog] {
+  --dialog-anim-duration: 250ms;
+
   background-color: white;
   border: none;
   border-radius: .75rem;
@@ -11,10 +13,55 @@
   padding: 1.5rem;
   position: fixed;
   width: 100%;
+
+  /* closed/exit state */
+  opacity: 0;
+  transform: translateY(1rem);
+
+  transition:
+    opacity var(--dialog-anim-duration) ease,
+    transform var(--dialog-anim-duration) ease,
+    display var(--dialog-anim-duration) allow-discrete,
+    overlay var(--dialog-anim-duration) allow-discrete;
+}
+
+/* open (end) state */
+[data-dialog][open] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* entry (from) state — first render of the open element */
+@starting-style {
+  [data-dialog][open] {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
 }
 
 [data-dialog]::backdrop {
+  background: #0000;
+  transition:
+    background var(--dialog-anim-duration) ease,
+    display var(--dialog-anim-duration) allow-discrete,
+    overlay var(--dialog-anim-duration) allow-discrete;
+}
+
+[data-dialog][open]::backdrop {
   background: #0005;
+}
+
+@starting-style {
+  [data-dialog][open]::backdrop {
+    background: #0000;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-dialog],
+  [data-dialog]::backdrop {
+    transition: none;
+  }
 }
 
 [data-dialog-content] {

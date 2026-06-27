@@ -51,27 +51,23 @@ export const WithActions: Story = {
   render: () => {
     const [isOpen, setIsOpen] = useState(true)
 
-    const toggleOpen = () => {
-      setIsOpen(!isOpen)
-    }
-
     return (
       <>
-        <button onClick={toggleOpen}>Open modal with actions</button>
+        <button onClick={() => setIsOpen(true)}>Open modal with actions</button>
         {isOpen && (
           <Dialog
             id="scale-modal-demo"
-            onClose={toggleOpen}
-            actions={
+            onClose={() => setIsOpen(false)}
+            actions={(close) => (
               <>
-                <button type="button" id="action-ok" onClick={toggleOpen}>
+                <button type="button" id="action-ok" onClick={close}>
                   OK
                 </button>
-                <button type="button" id="action-cancel" onClick={toggleOpen}>
+                <button type="button" id="action-cancel" onClick={close}>
                   Cancel
                 </button>
               </>
-            }
+            )}
           >
             <h2>Title</h2>
             <p>
